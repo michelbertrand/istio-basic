@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ include "istio-basic.name" . }}
   labels:
-    {{- include "istio-basic.labels" . | nindent 4 }}
+    {{- toYaml .Values.service.labels | nindent 4 }}
 spec:
   ports:
   - port: {{ .Values.service.port }}
