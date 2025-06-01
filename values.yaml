@@ -60,6 +60,10 @@ service:
   type: ClusterIP
   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
   port: 80
+  # This sets labels for the service more information can be found here: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+  labels:
+    app: my-app
+    service: my-service
   
 
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
