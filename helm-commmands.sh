@@ -256,4 +256,61 @@ helm install reviews /home/michel/workspace-devops/istio-basic \
   --set serviceAccount.create=false 
 
 
+echo '##################################################################################################'
+echo ' Productpage services '
+echo '##################################################################################################'  
+
+helm template productpage /home/michel/workspace-devops/istio-basic \
+  --set labels.app=reviews \
+  --set labels.version=v3 \
+  --set nameOverride=reviews \
+  --set fullnameOverride=productpage-v1 \
+  --set selectorLabels.app=productpage \
+  --set selectorLabels.version=v1 \
+  --set podAnnotations."prometheus.io/scrape"="true" \
+  --set podAnnotations."prometheus.io/port"="9080" \
+  --set podAnnotations."prometheus.io/path"="/metrics" \
+  --set podLabels.app=productpage \
+  --set podLabels.version=v1 \
+  --set image.tag=1.20.3 \
+  --set image.repository=docker.io/istio/examples-bookinfo-productpage-v1 \
+  --set image.PullPolicy=IfNotPresent \
+  --set volumeMounts[0].name=tmp \
+  --set volumeMounts[0].mountPath=/tmp \
+  --set volumes[0].name=tmp \
+  --set volumes[0].emptyDir={} \
+  --set service.port=9080 \
+  --set service.type=ClusterIP \
+  --set service.labels.app=productpage \
+  --set service.labels.service=productpage \  
+  --set serviceAccount.name=bookinfo-productpage \
+  --set serviceAccount.annotations."account"=productpage
+
+  helm install productpage /home/michel/workspace-devops/istio-basic \
+  --set labels.app=reviews \
+  --set labels.version=v3 \
+  --set nameOverride=reviews \
+  --set fullnameOverride=productpage-v1 \
+  --set selectorLabels.app=productpage \
+  --set selectorLabels.version=v1 \
+  --set podAnnotations."prometheus.io/scrape"="true" \
+  --set podAnnotations."prometheus.io/port"="9080" \
+  --set podAnnotations."prometheus.io/path"="/metrics" \
+  --set podLabels.app=productpage \
+  --set podLabels.version=v1 \
+  --set image.tag=1.20.3 \
+  --set image.repository=docker.io/istio/examples-bookinfo-productpage-v1 \
+  --set image.PullPolicy=IfNotPresent \
+  --set volumeMounts[0].name=tmp \
+  --set volumeMounts[0].mountPath=/tmp \
+  --set volumes[0].name=tmp \
+  --set volumes[0].emptyDir={} \  
+  --set service.port=9080 \
+  --set service.type=ClusterIP \
+  --set service.labels.app=productpage \
+  --set service.labels.service=productpage \  
+  --set serviceAccount.name=bookinfo-productpage \
+  --set serviceAccount.annotations."account"=productpage
+
+  
 
