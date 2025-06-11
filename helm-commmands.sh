@@ -101,14 +101,14 @@ helm template reviews /home/michel/workspace-devops/istio-basic \
   --set image.tag=1.20.3 \
   --set image.repository=docker.io/istio/examples-bookinfo-reviews-v1 \
   --set image.PullPolicy=IfNotPresent \
-  --set volumes[0].name=wlp-output \
-  --set volumes[0].emptyDir={} \
-  --set volumes[1].name=tmp \
-  --set volumes[1].emptyDir={} \
-  --set volumeMounts[0].name=tmp \
-  --set volumeMounts[0].mountPath=/tmp \
-  --set volumeMounts[1].name=wlp-output \
-  --set volumeMounts[1].mountPath=/opt/ibm/wlp/output \
+  --set 'volumes[0].name=wlp-output' \
+  --set 'volumes[0].emptyDir={}' \
+  --set 'volumes[1].name=tmp' \
+  --set 'volumes[1].emptyDir={}' \
+  --set 'volumeMounts[0].name=tmp' \
+  --set 'volumeMounts[0].mountPath=/tmp' \
+  --set 'volumeMounts[1].name=wlp-output' \
+  --set 'volumeMounts[1].mountPath=/opt/ibm/wlp/output' \
   --set service.port=9080 \
   --set service.type=ClusterIP \
   --set service.labels.app=reviews \
@@ -116,7 +116,7 @@ helm template reviews /home/michel/workspace-devops/istio-basic \
   --set serviceAccount.name=bookinfo-reviews \
   --set serviceAccount.annotations."account"=reviews
 
-  helm install reviews /home/michel/workspace-devops/istio-basic \
+helm template reviews /home/michel/workspace-devops/istio-basic \
   --set labels.app=reviews \
   --set labels.version=v1 \
   --set nameOverride=reviews \
@@ -128,14 +128,14 @@ helm template reviews /home/michel/workspace-devops/istio-basic \
   --set image.tag=1.20.3 \
   --set image.repository=docker.io/istio/examples-bookinfo-reviews-v1 \
   --set image.PullPolicy=IfNotPresent \
-  --set volumes[0].name=wlp-output \
-  --set volumes[0].emptyDir={} \
-  --set volumes[1].name=tmp \
-  --set volumes[1].emptyDir={} \
-  --set volumeMounts[0].name=tmp \
-  --set volumeMounts[0].mountPath=/tmp \
-  --set volumeMounts[1].name=wlp-output \
-  --set volumeMounts[1].mountPath=/opt/ibm/wlp/output \
+  --set 'volumes[0].name=wlp-output' \
+  --set 'volumes[0].emptyDir={}' \
+  --set 'volumes[1].name=tmp' \
+  --set 'volumes[1].emptyDir={}' \
+  --set 'volumeMounts[0].name=tmp' \
+  --set 'volumeMounts[0].mountPath=/tmp' \
+  --set 'volumeMounts[1].name=wlp-output' \
+  --set 'volumeMounts[1].mountPath=/opt/ibm/wlp/output' \
   --set service.port=9080 \
   --set service.type=ClusterIP \
   --set service.labels.app=reviews \
@@ -159,14 +159,14 @@ helm template reviews /home/michel/workspace-devops/istio-basic \
   --set image.tag=1.20.3 \
   --set image.repository=docker.io/istio/examples-bookinfo-reviews-v2 \
   --set image.PullPolicy=IfNotPresent \
-  --set volumes[0].name=wlp-output \
-  --set volumes[0].emptyDir={} \
-  --set volumes[1].name=tmp \
-  --set volumes[1].emptyDir={} \
-  --set volumeMounts[0].name=tmp \
-  --set volumeMounts[0].mountPath=/tmp \
-  --set volumeMounts[1].name=wlp-output \
-  --set volumeMounts[1].mountPath=/opt/ibm/wlp/output \
+  --set 'volumes[0].name=wlp-output' \
+  --set 'volumes[0].emptyDir={}' \
+  --set 'volumes[1].name=tmp' \
+  --set 'volumes[1].emptyDir={}' \
+  --set 'volumeMounts[0].name=tmp' \
+  --set 'volumeMounts[0].mountPath=/tmp' \
+  --set 'volumeMounts[1].name=wlp-output' \
+  --set 'volumeMounts[1].mountPath=/opt/ibm/wlp/output' \
   --set service.port=9080 \
   --set service.type=ClusterIP \
   --set service.labels.app=reviews \
@@ -174,7 +174,7 @@ helm template reviews /home/michel/workspace-devops/istio-basic \
   --set service.create=false \
   --set serviceAccount.create=false 
   
-  helm install reviews /home/michel/workspace-devops/istio-basic \
+helm install reviews /home/michel/workspace-devops/istio-basic \
   --set labels.app=reviews \
   --set labels.version=v2 \
   --set nameOverride=reviews \
@@ -186,14 +186,18 @@ helm template reviews /home/michel/workspace-devops/istio-basic \
   --set image.tag=1.20.3 \
   --set image.repository=docker.io/istio/examples-bookinfo-reviews-v2 \
   --set image.PullPolicy=IfNotPresent \
-  --set volumes[0].name=wlp-output \
-  --set volumes[0].emptyDir={} \
-  --set volumes[1].name=tmp \
-  --set volumes[1].emptyDir={} \
-  --set volumeMounts[0].name=tmp \
-  --set volumeMounts[0].mountPath=/tmp \
-  --set volumeMounts[1].name=wlp-output \
-  --set volumeMounts[1].mountPath=/opt/ibm/wlp/output \
+  --set 'volumes[0].name=wlp-output' \
+  --set 'volumes[0].emptyDir={}' \
+  --set 'volumes[1].name=tmp' \
+  --set 'volumes[1].emptyDir={}' \
+  --set 'volumeMounts[0].name=tmp' \
+  --set 'volumeMounts[0].mountPath=/tmp' \
+  --set 'volumeMounts[1].name=wlp-output' \
+  --set 'volumeMounts[1].mountPath=/opt/ibm/wlp/output' \
+  --set service.port=9080 \
+  --set service.type=ClusterIP \
+  --set service.labels.app=reviews \
+  --set service.labels.service=reviews \
   --set service.create=false \
   --set serviceAccount.create=false 
 
@@ -201,7 +205,7 @@ echo '##########################################################################
 echo ' Reviews V3 service '
 echo '##################################################################################################'  
 
-helm template reviews /home/michel/workspace-devops/istio-basic -f /home/michel/workspace-devops/istio-basic/custom-volumes-1.yaml \
+helm template reviews /home/michel/workspace-devops/istio-basic \
   --set labels.app=reviews \
   --set labels.version=v3 \
   --set nameOverride=reviews \
@@ -213,14 +217,14 @@ helm template reviews /home/michel/workspace-devops/istio-basic -f /home/michel/
   --set image.tag=1.20.3 \
   --set image.repository=docker.io/istio/examples-bookinfo-reviews-v3 \
   --set image.PullPolicy=IfNotPresent \
-  --set volumes[0].name=wlp-output \
-  --set volumes[0].emptyDir={} \
-  --set volumes[1].name=tmp \
-  --set volumes[1].emptyDir={} \
-  --set volumeMounts[0].name=tmp \
-  --set volumeMounts[0].mountPath=/tmp \
-  --set volumeMounts[1].name=wlp-output \
-  --set volumeMounts[1].mountPath=/opt/ibm/wlp/output \
+  --set 'volumes[0].name=wlp-output' \
+  --set 'volumes[0].emptyDir={}' \
+  --set 'volumes[1].name=tmp' \
+  --set 'volumes[1].emptyDir={}' \
+  --set 'volumeMounts[0].name=tmp' \
+  --set 'volumeMounts[0].mountPath=/tmp' \
+  --set 'volumeMounts[1].name=wlp-output' \
+  --set 'volumeMounts[1].mountPath=/opt/ibm/wlp/output' \
   --set service.port=9080 \
   --set service.type=ClusterIP \
   --set service.labels.app=reviews \
@@ -228,7 +232,7 @@ helm template reviews /home/michel/workspace-devops/istio-basic -f /home/michel/
   --set service.create=false \
   --set serviceAccount.create=false 
 
-helm install reviews /home/michel/workspace-devops/istio-basic -f /home/michel/workspace-devops/istio-basic/custom-volumes-1.yaml  \
+helm install reviews /home/michel/workspace-devops/istio-basic \
   --set labels.app=reviews \
   --set labels.version=v3 \
   --set nameOverride=reviews \
@@ -240,19 +244,27 @@ helm install reviews /home/michel/workspace-devops/istio-basic -f /home/michel/w
   --set image.tag=1.20.3 \
   --set image.repository=docker.io/istio/examples-bookinfo-reviews-v3 \
   --set image.PullPolicy=IfNotPresent \
+  --set 'volumes[0].name=wlp-output' \
+  --set 'volumes[0].emptyDir={}' \
+  --set 'volumes[1].name=tmp' \
+  --set 'volumes[1].emptyDir={}' \
+  --set 'volumeMounts[0].name=tmp' \
+  --set 'volumeMounts[0].mountPath=/tmp' \
+  --set 'volumeMounts[1].name=wlp-output' \
+  --set 'volumeMounts[1].mountPath=/opt/ibm/wlp/output' \
   --set service.port=9080 \
   --set service.type=ClusterIP \
   --set service.labels.app=reviews \
   --set service.labels.service=reviews \
   --set service.create=false \
-  --set serviceAccount.create=false 
+  --set serviceAccount.create=false
 
 
 echo '##################################################################################################'
 echo ' Productpage services '
 echo '##################################################################################################'  
 
-helm template productpage /home/michel/workspace-devops/istio-basic -f /home/michel/workspace-devops/istio-basic/custom-volumes-2.yaml \
+helm template productpage /home/michel/workspace-devops/istio-basic \
   --set labels.app=reviews \
   --set labels.version=v3 \
   --set nameOverride=reviews \
@@ -267,14 +279,18 @@ helm template productpage /home/michel/workspace-devops/istio-basic -f /home/mic
   --set image.tag=1.20.3 \
   --set image.repository=docker.io/istio/examples-bookinfo-productpage-v1 \
   --set image.PullPolicy=IfNotPresent \
+  --set 'volumes[0].name=tmp' \
+  --set 'volumes[0].emptyDir={}' \
+  --set 'volumeMounts[0].name=tmp' \
+  --set 'volumeMounts[0].mountPath=/tmp' \
   --set service.port=9080 \
   --set service.type=ClusterIP \
   --set service.labels.app=productpage \
   --set service.labels.service=productpage \
   --set serviceAccount.name=bookinfo-productpage \
-  --set serviceAccount.annotations."account"=productpage
+  --set serviceAccount.annotations."account"=productpage 
 
-  helm install productpage /home/michel/workspace-devops/istio-basic  -f /home/michel/workspace-devops/istio-basic/custom-volumes-2.yaml \
+  helm install productpage /home/michel/workspace-devops/istio-basic \
   --set labels.app=reviews \
   --set labels.version=v3 \
   --set nameOverride=reviews \
@@ -289,12 +305,16 @@ helm template productpage /home/michel/workspace-devops/istio-basic -f /home/mic
   --set image.tag=1.20.3 \
   --set image.repository=docker.io/istio/examples-bookinfo-productpage-v1 \
   --set image.PullPolicy=IfNotPresent \
+  --set 'volumes[0].name=tmp' \
+  --set 'volumes[0].emptyDir={}' \
+  --set 'volumeMounts[0].name=tmp' \
+  --set 'volumeMounts[0].mountPath=/tmp' \
   --set service.port=9080 \
   --set service.type=ClusterIP \
   --set service.labels.app=productpage \
   --set service.labels.service=productpage \
   --set serviceAccount.name=bookinfo-productpage \
-  --set serviceAccount.annotations."account"=productpage
+  --set serviceAccount.annotations."account"=productpage 
 
   
 
