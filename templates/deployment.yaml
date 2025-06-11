@@ -27,8 +27,11 @@ spec:
         - name: http
         containerPort: {{ .Values.service.port }}
         {{- if .Values.volumeMounts }}
+        volumeMounts:
         {{- toYaml .Values.volumeMounts | nindent 8 }}
         {{- end }}
       {{- if .Values.volumes }}
+      volume:
       {{- toYaml .Values.volumes | nindent 6 }}
       {{- end }}
+  
