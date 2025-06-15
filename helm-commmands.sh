@@ -283,9 +283,9 @@ helm template productpage /home/michel/workspace-devops/istio-basic \
   --set fullnameOverride=productpage-v1 \
   --set selectorLabels.app=productpage \
   --set selectorLabels.version=v1 \
-  --set podAnnotations."prometheus.io/scrape"="true" \
-  --set podAnnotations."prometheus.io/port"="9080" \
-  --set podAnnotations."prometheus.io/path"="/metrics" \
+  --set-string podAnnotations."prometheus\.io/scrape"="true" \
+  --set-string podAnnotations."prometheus\.io/port"="9080" \
+  --set-string podAnnotations."prometheus\.io/path"="/metrics" \
   --set podLabels.app=productpage \
   --set podLabels.version=v1 \
   --set image.tag=1.20.3 \
@@ -310,9 +310,9 @@ helm template productpage /home/michel/workspace-devops/istio-basic \
   --set fullnameOverride=productpage-v1 \
   --set selectorLabels.app=productpage \
   --set selectorLabels.version=v1 \
-  --set podAnnotations."prometheus.io/scrape"="true" \
-  --set podAnnotations."prometheus.io/port"="9080" \
-  --set podAnnotations."prometheus.io/path"="/metrics" \
+  --set-string podAnnotations."prometheus\.io/scrape"="true" \
+  --set-string podAnnotations."prometheus\.io/port"="9080" \
+  --set-string podAnnotations."prometheus\.io/path"="/metrics" \
   --set podLabels.app=productpage \
   --set podLabels.version=v1 \
   --set image.tag=1.20.3 \
