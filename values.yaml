@@ -136,4 +136,9 @@ tolerations: []
 
 affinity: {}
 
-EnvoyFilter.create: false
+# This section is for setting up the EnvoyFilter for Istio.
+# More information can be found here: https://istio.io/latest/docs/reference/config/networking/envoy-filter/
+envoyFilter:
+  create: true
+  
+  
