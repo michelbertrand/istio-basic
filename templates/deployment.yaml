@@ -25,7 +25,7 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - name: http
-        containerPort: {{ .Values.service.port }}
+          containerPort: {{ .Values.service.port }}
         {{- if .Values.volumeMounts }}
         volumeMounts:
         {{- toYaml .Values.volumeMounts | nindent 8 }}
