@@ -8,7 +8,7 @@ metadata:
 spec:
   workloadSelector:
     labels:
-      app: reviews
+      {{- toYaml .Values.podLabels | nindent 4 }}
   configPatches:
     # The first patch adds the lua filter to the listener/http connection manager
   - applyTo: HTTP_FILTER
@@ -27,22 +27,22 @@ spec:
        name: envoy.lua
        typed_config:
           "@type": "type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua"
-            default_source_code:
-               inline_string: |
-                 function envoy_on_request(request_handle)
-                   request_handle:logInfo("This is the default Lua code.")
-                 end
-             source_codes:
-               hello.lua:
-                 inline_string: |
-                   function envoy_on_request(request_handle)
-                     request_handle:logInfo("Hello World.")
-                   end
-               bye.lua:
-                 inline_string: |
-                   function envoy_on_response(response_handle)
-                     response_handle:logInfo("Bye Bye.")
-                   end
+          default_source_code:
+              inline_string: |
+                function envoy_on_request(request_handle)
+                  request_handle:logInfo("This is the default Lua code.")
+                end
+          source_codes:
+              hello.lua:
+                inline_string: |
+                  function envoy_on_request(request_handle)
+                    request_handle:logInfo("Hello World.")
+                  end
+              bye.lua:
+                inline_string: |
+                  function envoy_on_response(response_handle)
+                    response_handle:logInfo("Bye Bye.")
+                  end
   # The second patch adds the cluster that is referenced by the lua code
   # cds match is omitted as a new cluster is being added
   #- applyTo: CLUSTER
