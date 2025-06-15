@@ -6,6 +6,7 @@ echo ' Details service '
 echo '##################################################################################################'
 
 helm template details /home/michel/workspace-devops/istio-basic \
+    --set namespace=bookinfo \
     --set labels.app=details \
     --set labels.version=v1 \
     --set selectorLabels.app=details \
@@ -17,6 +18,7 @@ helm template details /home/michel/workspace-devops/istio-basic \
     --set image.tag=1.20.3 \
     --set image.repository=docker.io/istio/examples-bookinfo-details-v1 \
     --set image.PullPolicy=IfNotPresent \
+    --set EnvoyFilter.create=true \
     --set service.port=9080 \
     --set service.type=ClusterIP \
     --set service.labels.app=details \
@@ -25,23 +27,25 @@ helm template details /home/michel/workspace-devops/istio-basic \
     --set serviceAccount.annotations."account"=details
 
 helm install details /home/michel/workspace-devops/istio-basic \
-  --set labels.app=details \
-  --set labels.version=v1 \
-  --set nameOverride=details \
-  --set fullnameOverride=details-v1 \
-  --set selectorLabels.app=details \
-  --set selectorLabels.version=v1 \
-  --set podLabels.app=details \
-  --set podLabels.version=v1 \
-  --set image.tag=1.20.3 \
-  --set image.repository=docker.io/istio/examples-bookinfo-details-v1 \
-  --set image.PullPolicy=IfNotPresent \
-  --set service.port=9080 \
-  --set service.type=ClusterIP \
-  --set service.labels.app=details \
-  --set service.labels.service=details \
-  --set serviceAccount.name=bookinfo-details \
-  --set serviceAccount.annotations."account"=details
+    --set namespace=bookinfo \
+    --set labels.app=details \
+    --set labels.version=v1 \
+    --set selectorLabels.app=details \
+    --set selectorLabels.version=v1 \
+    --set podLabels.app=details \
+    --set podLabels.version=v1 \
+    --set nameOverride=details \
+    --set fullnameOverride=details-v1 \
+    --set image.tag=1.20.3 \
+    --set image.repository=docker.io/istio/examples-bookinfo-details-v1 \
+    --set image.PullPolicy=IfNotPresent \
+    --set EnvoyFilter.create=true \
+    --set service.port=9080 \
+    --set service.type=ClusterIP \
+    --set service.labels.app=details \
+    --set service.labels.service=details \
+    --set serviceAccount.name=bookinfo-details \
+    --set serviceAccount.annotations."account"=details
 
 echo '##################################################################################################'
 echo ' Ratings service '
