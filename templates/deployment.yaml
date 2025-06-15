@@ -31,7 +31,7 @@ spec:
         {{- toYaml .Values.volumeMounts | nindent 8 }}
         {{- end }}
       {{- if .Values.volumes }}
-      volume:
+      volumes:
       {{- toYaml .Values.volumes | nindent 6 }}
       {{- end }}
   
