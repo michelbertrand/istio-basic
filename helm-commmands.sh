@@ -18,7 +18,7 @@ helm template details /home/michel/workspace-devops/istio-basic \
     --set image.tag=1.20.3 \
     --set image.repository=docker.io/istio/examples-bookinfo-details-v1 \
     --set image.PullPolicy=IfNotPresent \
-    --set envoyFilter.create=true \
+    --set envoyFilter.create=false \
     --set service.port=9080 \
     --set service.type=ClusterIP \
     --set service.labels.app=details \
@@ -39,7 +39,7 @@ helm install details /home/michel/workspace-devops/istio-basic \
     --set image.tag=1.20.3 \
     --set image.repository=docker.io/istio/examples-bookinfo-details-v1 \
     --set image.PullPolicy=IfNotPresent \
-    --set envoyFilter.create=true \
+    --set envoyFilter.create=false \
     --set service.port=9080 \
     --set service.type=ClusterIP \
     --set service.labels.app=details \
@@ -63,7 +63,7 @@ helm template ratings /home/michel/workspace-devops/istio-basic \
   --set image.tag=1.20.3 \
   --set image.repository=docker.io/istio/examples-bookinfo-ratings-v1 \
   --set image.PullPolicy=IfNotPresent \
-  --set envoyFilter.create=false \
+  --set envoyFilter.create=true \
   --set service.port=9080 \
   --set service.type=ClusterIP \
   --set service.labels.app=ratings \
@@ -83,7 +83,7 @@ helm install ratings /home/michel/workspace-devops/istio-basic \
   --set image.tag=1.20.3 \
   --set image.repository=docker.io/istio/examples-bookinfo-ratings-v1 \
   --set image.PullPolicy=IfNotPresent \
-  --set envoyFilter.create=false \
+  --set envoyFilter.create=true \
   --set service.port=9080 \
   --set service.type=ClusterIP \
   --set service.labels.app=ratings \
