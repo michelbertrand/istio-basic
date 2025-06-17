@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [1.0.2] - 06-08-2025
+## [1.0.3] - 06-17-2025
 ### Added
 - Initial release of the Istio Basic Helm Chart.
 - Ratings service
@@ -12,3 +12,4 @@ All notable changes to this project will be documented in this file.
 - Productpage service
 - Envoy filter using Lua scripts
 - General error fix / Specially for pod labels in Service
+- The default log level for istio-proxy is warn, change the lua scipt to use logWarn instead of logInfo
