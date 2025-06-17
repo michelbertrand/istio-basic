@@ -291,7 +291,7 @@ helm template productpage /home/michel/workspace-devops/istio-basic \
   --set image.tag=1.20.3 \
   --set image.repository=docker.io/istio/examples-bookinfo-productpage-v1 \
   --set image.PullPolicy=IfNotPresent \
-  --set envoyFilter.create=false \
+  --set envoyFilter.create=true \
   --set 'volumes[0].name=tmp' \
   --set 'volumes[0].emptyDir=null' \
   --set 'volumeMounts[0].name=tmp' \
@@ -318,7 +318,7 @@ helm template productpage /home/michel/workspace-devops/istio-basic \
   --set image.tag=1.20.3 \
   --set image.repository=docker.io/istio/examples-bookinfo-productpage-v1 \
   --set image.PullPolicy=IfNotPresent \
-  --set envoyFilter.create=false \
+  --set envoyFilter.create=true \
   --set 'volumes[0].name=tmp' \
   --set 'volumes[0].emptyDir=null' \
   --set 'volumeMounts[0].name=tmp' \
