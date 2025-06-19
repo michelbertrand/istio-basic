@@ -1,6 +1,14 @@
 
 #/bin/bash
 
+
+echo '##################################################################################################'
+echo ' Create Namespace, gateway and virtualservice for Bookinfo application'
+echo '##################################################################################################'
+k apply -f /home/michel/workspace-devops/istio-basic/namespace.yaml
+k apply -f /home/michel/workspace-devops/istio-basic/gateway.yaml
+k apply -f /home/michel/workspace-devops/istio-basic/virtualservice.yaml
+
 echo '##################################################################################################'
 echo ' Details service '
 echo '##################################################################################################'
