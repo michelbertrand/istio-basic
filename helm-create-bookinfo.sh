@@ -5,8 +5,13 @@
 echo '##################################################################################################'
 echo ' Create Namespace, gateway and virtualservice for Bookinfo application'
 echo '##################################################################################################'
-k apply -f /home/michel/workspace-devops/istio-basic/namespace.yaml
-k apply -f /home/michel/workspace-devops/istio-basic/bookinfo-gateway.yaml
+kubectl apply -f /home/michel/workspace-devops/istio-basic/namespace.yaml
+
+sleep 5
+
+kubectl apply -f /home/michel/workspace-devops/istio-basic/bookinfo-gateway.yaml
+
+sleep 5
 
 echo '##################################################################################################'
 echo ' Details service '
