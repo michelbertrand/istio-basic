@@ -5,9 +5,13 @@
 echo '##################################################################################################'
 echo ' Create Namespace, gateway and virtualservice for Bookinfo application'
 echo '##################################################################################################'
-k apply -f /home/michel/workspace-devops/istio-basic/namespace.yaml
-k apply -f /home/michel/workspace-devops/istio-basic/gateway.yaml
-k apply -f /home/michel/workspace-devops/istio-basic/virtualservice.yaml
+kubectl apply -f /home/michel/workspace-devops/istio-basic/namespace.yaml
+
+sleep 5
+
+kubectl apply -f /home/michel/workspace-devops/istio-basic/bookinfo-gateway.yaml
+
+sleep 5
 
 echo '##################################################################################################'
 echo ' Details service '
@@ -338,5 +342,8 @@ helm template productpage /home/michel/workspace-devops/istio-basic \
   --set serviceAccount.name=bookinfo-productpage \
   --set serviceAccount.annotations."account"=productpage 
 
-  
+echo '##################################################################################################'
+echo ' Criacao completa para testar: '
+echo ' kubectl exec "$(kubectl get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}')" -c ratings -- curl -sS productpage:9080/productpage | grep -o "<title>.*</title>" '
+echo '##################################################################################################'
 
