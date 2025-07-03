@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "istio-basic.fullname" . }}
+  namespace: {{ .Values.namespace }}
   labels:
     {{- toYaml .Values.podLabels | nindent 4 }}
 spec:

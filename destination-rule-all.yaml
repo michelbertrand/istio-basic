@@ -2,6 +2,7 @@ apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: productpage
+  namespace: bookinfo
 spec:
   host: productpage
   subsets:
@@ -13,6 +14,7 @@ apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: reviews
+  namespace: bookinfo
 spec:
   host: reviews
   subsets:
@@ -22,14 +24,15 @@ spec:
   - name: v2
     labels:
       version: v2
-#  - name: v3
-#    labels:
-#      version: v3
+  - name: v3
+    labels:
+      version: v3
 ---
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: ratings
+  namespace: bookinfo
 spec:
   host: ratings
   subsets:
@@ -50,6 +53,7 @@ apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: details
+  namespace: bookinfo
 spec:
   host: details
   subsets:
