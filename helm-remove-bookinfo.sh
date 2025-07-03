@@ -12,4 +12,7 @@ helm uninstall productpage -n bookinfo
 kubectl delete gateway bookinfo-gateway -n bookinfo
 kubectl delete virtualservice bookinfo -n bookinfo
 
+# Remove namespace bookinfo
+kubectl delete namespace bookinfo
+
 echo "All Bookinfo Helm releases have been uninstalled."
