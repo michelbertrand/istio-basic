@@ -342,5 +342,8 @@ helm template productpage /home/michel/workspace-devops/istio-basic \
   --set serviceAccount.name=bookinfo-productpage \
   --set serviceAccount.annotations."account"=productpage 
 
-  
+echo '##################################################################################################'
+echo ' Criacao completa para testar: '
+echo ' kubectl exec "$(kubectl get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}')" -c ratings -- curl -sS productpage:9080/productpage | grep -o "<title>.*</title>" '
+echo '##################################################################################################'
 
