@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [1.0.4] - 07-03-2025
+## [1.0.4] - 07-04-2025
 ### Added
 - Initial release of the Istio Basic Helm Chart.
 - Ratings service
@@ -15,3 +15,4 @@ All notable changes to this project will be documented in this file.
 - The default log level for istio-proxy is warn, change the lua scipt to use logWarn instead of logInfo
 - Added script to manage creation or deletion of the chart from bookinfo and istio resources
 - Bug fxes to create the application
+- Add response handler to the Lua script in the Envoy filter
