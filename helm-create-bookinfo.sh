@@ -1,15 +1,16 @@
 
-#/bin/bash
+#!/usr/bin/env bash
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo '##################################################################################################'
 echo ' Create Namespace, gateway and virtualservice for Bookinfo application'
 echo '##################################################################################################'
-kubectl apply -f /home/michel/workspace-devops/istio-basic/namespace.yaml
+kubectl apply -f "$SCRIPT_DIR/namespace.yaml"
 
 sleep 5
 
-kubectl apply -f /home/michel/workspace-devops/istio-basic/bookinfo-gateway.yaml
+kubectl apply -f "$SCRIPT_DIR/bookinfo-gateway.yaml"
 
 sleep 5
 
@@ -17,7 +18,7 @@ echo '##########################################################################
 echo ' Details service '
 echo '##################################################################################################'
 
-helm template details /home/michel/workspace-devops/istio-basic \
+helm template details "$SCRIPT_DIR" \
     --set namespace=bookinfo \
     --set labels.app=details \
     --set labels.version=v1 \
@@ -38,7 +39,7 @@ helm template details /home/michel/workspace-devops/istio-basic \
     --set serviceAccount.name=bookinfo-details \
     --set serviceAccount.annotations."account"=details
 
-helm install details /home/michel/workspace-devops/istio-basic \
+helm install details "$SCRIPT_DIR" \
     --set namespace=bookinfo \
     --set labels.app=details \
     --set labels.version=v1 \
@@ -63,7 +64,7 @@ echo '##########################################################################
 echo ' Ratings service '
 echo '##################################################################################################'
 
-helm template ratings /home/michel/workspace-devops/istio-basic \
+helm template ratings "$SCRIPT_DIR" \
   --set labels.app=ratings \
   --set labels.version=v1 \
   --set nameOverride=ratings \
@@ -83,7 +84,7 @@ helm template ratings /home/michel/workspace-devops/istio-basic \
   --set serviceAccount.name=bookinfo-ratings \
   --set serviceAccount.annotations."account"=ratings
 
-helm install ratings /home/michel/workspace-devops/istio-basic \
+helm install ratings "$SCRIPT_DIR" \
   --set labels.app=ratings \
   --set labels.version=v1 \
   --set nameOverride=ratings \
@@ -107,7 +108,7 @@ echo '##########################################################################
 echo ' Reviews service '
 echo '##################################################################################################'
 
-helm template reviews /home/michel/workspace-devops/istio-basic \
+helm template reviews "$SCRIPT_DIR" \
   --set labels.app=reviews \
   --set labels.version=v1 \
   --set nameOverride=reviews \
@@ -135,7 +136,7 @@ helm template reviews /home/michel/workspace-devops/istio-basic \
   --set serviceAccount.name=bookinfo-reviews \
   --set serviceAccount.annotations."account"=reviews
 
-helm install reviews /home/michel/workspace-devops/istio-basic \
+helm install reviews "$SCRIPT_DIR" \
   --set labels.app=reviews \
   --set labels.version=v1 \
   --set nameOverride=reviews \
@@ -167,7 +168,7 @@ echo '##########################################################################
 echo ' Reviews V2 service '
 echo '##################################################################################################'
 
-helm template reviews-v2 /home/michel/workspace-devops/istio-basic \
+helm template reviews-v2 "$SCRIPT_DIR" \
   --set labels.app=reviews \
   --set labels.version=v2 \
   --set nameOverride=reviews \
@@ -195,7 +196,7 @@ helm template reviews-v2 /home/michel/workspace-devops/istio-basic \
   --set service.create=false \
   --set serviceAccount.create=false 
   
-helm install reviews-v2 /home/michel/workspace-devops/istio-basic \
+helm install reviews-v2 "$SCRIPT_DIR" \
   --set labels.app=reviews \
   --set labels.version=v2 \
   --set nameOverride=reviews \
@@ -227,7 +228,7 @@ echo '##########################################################################
 echo ' Reviews V3 service '
 echo '##################################################################################################'  
 
-helm template reviews-v3 /home/michel/workspace-devops/istio-basic \
+helm template reviews-v3 "$SCRIPT_DIR" \
   --set labels.app=reviews \
   --set labels.version=v3 \
   --set nameOverride=reviews \
@@ -255,7 +256,7 @@ helm template reviews-v3 /home/michel/workspace-devops/istio-basic \
   --set service.create=false \
   --set serviceAccount.create=false 
 
-helm install reviews-v3 /home/michel/workspace-devops/istio-basic \
+helm install reviews-v3 "$SCRIPT_DIR" \
   --set labels.app=reviews \
   --set labels.version=v3 \
   --set nameOverride=reviews \
@@ -288,7 +289,7 @@ echo '##########################################################################
 echo ' Productpage services '
 echo '##################################################################################################'  
 
-helm template productpage /home/michel/workspace-devops/istio-basic \
+helm template productpage "$SCRIPT_DIR" \
   --set labels.app=productpage \
   --set labels.version=v3 \
   --set nameOverride=productpage \
@@ -315,7 +316,7 @@ helm template productpage /home/michel/workspace-devops/istio-basic \
   --set serviceAccount.name=bookinfo-productpage \
   --set serviceAccount.annotations."account"=productpage 
 
-  helm install productpage /home/michel/workspace-devops/istio-basic \
+  helm install productpage "$SCRIPT_DIR" \
   --set labels.app=productpage \
   --set labels.version=v3 \
   --set nameOverride=productpage \
